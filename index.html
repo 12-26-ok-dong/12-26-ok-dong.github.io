@@ -1,0 +1,692 @@
+<!DOCTYPE html><html lang="ko"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><style>@font-face {
+  font-family: "MaruBuri";
+  src: url("MaruBuri-ExtraLight.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 200 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MaruBuri";
+  src: url("MaruBuri-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MaruBuri";
+  src: url("MaruBuri-SemiBold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: swap;
+}
+
+:root {
+  --font-maru: "MaruBuri", "AppleMyungjo", "Nanum Myeongjo", "Noto Serif KR", serif;
+  --paper: #f7f5ef;
+  --paper-deep: #efede5;
+  --ink: #232822;
+  --muted: #71786d;
+  --green: #66745f;
+  --line: rgba(35, 40, 34, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #deddd7;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: #deddd7;
+  font-family: var(--font-maru);
+  -webkit-font-smoothing: antialiased;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.page-shell {
+  width: 100%;
+  min-height: 100vh;
+}
+
+main {
+  width: min(100%, 520px);
+  margin: 0 auto;
+  overflow: hidden;
+  background: var(--paper);
+  box-shadow: 0 0 40px rgba(26, 30, 25, 0.1);
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  background: #e8edf0;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(249, 250, 248, 0.12), transparent 35%, rgba(20, 29, 19, 0.08));
+  pointer-events: none;
+}
+
+.hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: 58% 50%;
+  scale: 1;
+  transform: none !important;
+  transition: none !important;
+  animation: none !important;
+  will-change: auto;
+}
+
+.hero-copy {
+  position: absolute;
+  z-index: 1;
+  top: max(92px, 11.5svh);
+  left: 28px;
+  right: 28px;
+  text-align: center;
+  color: #252a27;
+}
+
+.section-kicker {
+  margin: 0 0 17px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+}
+
+.hero h1,
+.section h2 {
+  font-family: var(--font-maru);
+  font-weight: 400;
+}
+
+.hero h1 {
+  display: flex;
+  justify-content: center;
+  gap: 38px;
+  margin: 0;
+  font-size: clamp(22px, 6.4vw, 31px);
+  font-weight: 300;
+  letter-spacing: 0.08em;
+}
+
+.hero-status {
+  margin: 13px 0 0;
+  font-family: var(--font-maru);
+  font-size: 14px;
+  letter-spacing: 0.12em;
+}
+
+.hero-date {
+  margin: 13px 0 0;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+
+.section {
+  padding: 92px 28px;
+  text-align: center;
+}
+
+.section-kicker {
+  color: var(--green);
+}
+
+.section h2 {
+  margin: 0;
+  font-size: 26px;
+  letter-spacing: -0.03em;
+}
+
+.section-subtitle {
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.invitation {
+  padding-top: 108px;
+  padding-bottom: 65px;
+}
+
+.invitation-sheep {
+  display: block;
+  width: 92px;
+  height: auto;
+  margin: 0 auto 31px;
+  mix-blend-mode: multiply;
+}
+
+.invitation-copy {
+  margin: 35px 0 42px;
+  color: #555d53;
+  font-family: var(--font-maru);
+  font-size: 14px;
+  line-height: 2.15;
+}
+
+.family-lines {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 29px;
+  border-top: 1px solid var(--line);
+  text-align: left;
+}
+
+.family-lines p {
+  margin: 0;
+  color: #4f564e;
+  font-size: 13px;
+}
+
+.family-lines span {
+  display: inline-block;
+  margin-right: 3px;
+  color: var(--muted);
+}
+
+.family-lines strong {
+  margin-left: 6px;
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+}
+
+.venue {
+  padding-top: 62px;
+  padding-bottom: 64px;
+}
+
+.map-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  margin-top: 31px;
+}
+
+.map-buttons a {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  color: var(--ink);
+  background: transparent;
+  font-size: 13px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.directions {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-top: 40px;
+  padding-top: 31px;
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+
+.directions > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.direction-label {
+  color: var(--green);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.directions p {
+  margin: 0;
+  color: #676e65;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.bus-guide {
+  margin-top: 36px;
+  padding-top: 34px;
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+
+.bus-guide h3 {
+  margin: 0;
+  color: var(--green);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.bus-route {
+  margin-top: 25px;
+}
+
+.bus-route > strong {
+  display: block;
+  margin-bottom: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.bus-stop {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  align-items: center;
+  margin-top: 17px;
+  text-align: center;
+}
+
+.bus-stop > span {
+  display: inline-flex;
+  width: 22px;
+  height: 22px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--paper);
+  background: var(--green);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.bus-stop p,
+.return-route p {
+  margin: 0;
+  color: #555d53;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.bus-stop b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.bus-place {
+  display: block;
+  color: #454d44;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.bus-stop small {
+  display: block;
+  margin-top: 1px;
+  color: #626a60;
+  font-size: 12.5px;
+}
+
+.return-route {
+  margin-top: 29px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(35, 40, 34, 0.1);
+}
+
+.return-route strong span {
+  display: block;
+  margin-top: 4px;
+}
+
+.return-route p {
+  white-space: nowrap;
+}
+
+.gallery-section {
+  background: #e9e8e0;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+}
+
+.gallery-grid button {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  background: #d9d9d3;
+  cursor: zoom-in;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.gallery-grid button:active img {
+  transform: scale(1.03);
+}
+
+.photo-credit {
+  margin: 0;
+  padding: 9px 12px 11px;
+  color: #7c8279;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-align: right;
+}
+
+.accounts {
+  background: #f8f6f1;
+}
+
+.account-groups {
+  margin-top: 33px;
+  text-align: left;
+}
+
+.account-groups details {
+  border-bottom: 1px solid var(--line);
+}
+
+.account-groups summary {
+  display: flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  font-size: 14px;
+  list-style: none;
+  cursor: pointer;
+}
+
+.account-groups summary::-webkit-details-marker {
+  display: none;
+}
+
+.account-groups summary span {
+  width: 11px;
+  height: 11px;
+  margin-right: 2px;
+  border-right: 1px solid #777f76;
+  border-bottom: 1px solid #777f76;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.25s ease;
+}
+
+.account-groups details[open] summary span {
+  transform: translateY(3px) rotate(225deg);
+}
+
+.account-list {
+  padding: 0 8px 14px;
+}
+
+.account-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 8px;
+  border-top: 1px solid rgba(35, 40, 34, 0.08);
+}
+
+.account-row > div {
+  display: grid;
+  grid-template-columns: 54px 60px 1fr;
+  align-items: center;
+}
+
+.account-row span,
+.account-row small {
+  color: #858b83;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.account-row strong {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.account-row button {
+  min-width: 70px;
+  min-height: 32px;
+  padding: 0 11px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  color: #5f675d;
+  background: transparent;
+  font-size: 11px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.account-row button:active {
+  background: var(--paper-deep);
+}
+
+footer {
+  padding: 78px 24px 70px;
+  text-align: center;
+  color: #424a41;
+  background: #e8e7df;
+  border-top: 1px solid rgba(35, 40, 34, 0.08);
+}
+
+footer p {
+  margin: 0;
+  font-family: var(--font-maru);
+  font-size: 16px;
+  letter-spacing: 0.06em;
+}
+
+footer small {
+  display: block;
+  margin-top: 12px;
+  color: #7d847a;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+}
+
+.lightbox {
+  position: fixed;
+  z-index: 50;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 55px 45px 60px;
+  background: rgba(17, 19, 17, 0.97);
+}
+
+.lightbox[hidden],
+.toast[hidden] {
+  display: none;
+}
+
+.lightbox img {
+  width: min(100%, calc(100svh - 130px));
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.lightbox button {
+  border: 0;
+  color: white;
+  background: transparent;
+  cursor: pointer;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  width: 44px;
+  height: 44px;
+  font-size: 31px;
+  font-weight: 200;
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  width: 42px;
+  height: 64px;
+  font-size: 42px;
+  font-weight: 200;
+  transform: translateY(-50%);
+}
+
+.lightbox-nav.prev { left: 2px; }
+.lightbox-nav.next { right: 2px; }
+
+.lightbox p {
+  position: absolute;
+  bottom: 24px;
+  left: 0;
+  right: 0;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-align: center;
+}
+
+.toast {
+  position: fixed;
+  z-index: 80;
+  left: 50%;
+  bottom: 25px;
+  width: min(calc(100% - 40px), 460px);
+  padding: 13px 16px;
+  border-radius: 3px;
+  color: white;
+  background: rgba(37, 42, 37, 0.94);
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+  transform: translateX(-50%);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+@media (min-width: 560px) {
+  .page-shell {
+    padding: 28px 0;
+  }
+
+  main {
+    border-radius: 2px;
+  }
+
+  .hero {
+    border-radius: 2px 2px 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .gallery-grid img { transition: none; }
+}
+</style><meta name="theme-color" content="#f5f2e9"/><title>해동, 선옥 결혼합니다.</title><meta name="description" content="2026년 12월 26일 토요일 오후 2시, 아벤티움 서울"/></head><body><div hidden=""><!--$--><!--/$--></div><div class="page-shell"><main><section class="hero" aria-labelledby="hero-title"><img class="hero-image" src="img-3031.jpg" alt="넓은 하늘 아래 나란히 앉은 해동과 선옥" fetchPriority="high"/><div class="hero-copy"><h1 id="hero-title"><span>정해동</span><span>이선옥</span></h1><p class="hero-status">결혼합니다.</p><p class="hero-date">2026년 12월 26일 토요일 오후 2시</p></div></section><section class="section invitation" id="invitation"><img class="invitation-sheep" src="sheep-v3.png" alt="마주 보는 두 마리 양"/><h2>초대합니다.</h2><p class="invitation-copy">같은 방향을 꿈꾸게 된 저희의 새로운 시작을<br/>함께 축하해주세요.</p><div class="family-lines" aria-label="혼주와 신랑 신부 소개"><p><span>정휘진 · 곽금영</span>의 장남 <strong>해동</strong></p><p><span>이원호 · 정효선</span>의 차녀 <strong>선옥</strong></p></div></section><section class="section venue" aria-labelledby="venue-title"><p class="section-kicker">오시는 길</p><h2 id="venue-title">아벤티움 서울</h2><p class="section-subtitle">서울특별시 중구 청파로 464<br/>브라운스톤서울 3층</p><div class="map-buttons"><a href="https://map.naver.com/p/search/%EC%95%84%EB%B2%A4%ED%8B%B0%EC%9B%80%20%EC%84%9C%EC%9A%B8" target="_blank" rel="noreferrer">네이버 지도</a><a href="https://map.kakao.com/?q=%EC%95%84%EB%B2%A4%ED%8B%B0%EC%9B%80%20%EC%84%9C%EC%9A%B8" target="_blank" rel="noreferrer">카카오맵</a></div><div class="directions"><div><span class="direction-label">지하철</span><p>2·5호선 충정로역 4번 출구 도보 3분<br/>1·4호선 서울역 15번 출구 도보 10분</p></div><div><span class="direction-label">주차</span><p>별관 서소문공원 주차장이 보다 여유롭습니다.<br/>내비게이션에 ‘서소문공원’을 검색해 주세요.</p></div></div><div class="bus-guide" aria-labelledby="bus-guide-title"><h3 id="bus-guide-title">버스타는 곳</h3><div class="bus-route"><strong>대구 → 서울</strong><div class="bus-stop"><span>1</span><p><b>오전 8시 30분</b><span class="bus-place">불로동 화훼단지 성주식물원 앞</span><small>대구 동구 팔공로 50</small></p></div><div class="bus-stop"><span>2</span><p><b>오전 9시</b><span class="bus-place">서부정류장 삼성전자 앞</span><small>대구 달서구 구마로 259 삼성스토어 남대구 1층</small></p></div></div><div class="bus-route return-route"><strong>서울 → 대구<span>오후 4시 30분</span></strong><p>예식장과 서소문공원 사이 도로 버스 주차장</p></div></div></section><section class="gallery-section" aria-label="사진첩"><div class="gallery-grid"><button type="button" aria-label="1번째 사진 크게 보기"><img src="img-3026.jpg" alt="초록 언덕에서 마주 보는 해동과 선옥" loading="lazy" style="object-position:50% 72%"/></button><button type="button" aria-label="2번째 사진 크게 보기"><img src="img-3039.jpg" alt="잔디밭에서 손을 잡고 웃는 해동과 선옥" loading="lazy" style="object-position:50% 66%"/></button><button type="button" aria-label="3번째 사진 크게 보기"><img src="img-3033.jpg" alt="푸른 언덕에서 손을 맞잡은 해동과 선옥" loading="lazy" style="object-position:50% 67%"/></button><button type="button" aria-label="4번째 사진 크게 보기"><img src="img-3041.jpg" alt="잔디밭에 나란히 앉아 꽃을 바라보는 두 사람" loading="lazy" style="object-position:50% 58%"/></button><button type="button" aria-label="5번째 사진 크게 보기"><img src="img-3035.jpg" alt="토끼풀 반지를 낀 두 사람의 손" loading="lazy" style="object-position:50% 50%"/></button><button type="button" aria-label="6번째 사진 크게 보기"><img src="img-2803.jpg" alt="푸른 숲에서 서로를 바라보는 해동과 선옥" loading="lazy" style="object-position:50% 77%"/></button><button type="button" aria-label="7번째 사진 크게 보기"><img src="img-3027.jpg" alt="잔디밭에 앉아 함께 웃는 두 사람" loading="lazy" style="object-position:50% 72%"/></button><button type="button" aria-label="8번째 사진 크게 보기"><img src="img-3031.jpg" alt="넓은 하늘 아래 나란히 앉은 해동과 선옥" loading="lazy" style="object-position:50% 74%"/></button><button type="button" aria-label="9번째 사진 크게 보기"><img src="img-3034.jpg" alt="꽃다발을 들고 잔디에 앉은 해동과 선옥" loading="lazy" style="object-position:50% 67%"/></button></div><p class="photo-credit">@timid_pookie</p></section><section class="section accounts" aria-labelledby="accounts-title"><h2 id="accounts-title">마음 전하실 곳</h2><p class="section-subtitle">참석이 어려우신 분들을 위해<br/>조심스럽게 계좌번호를 안내드립니다.</p><div class="account-groups" id="account-list"><details><summary>신랑 측<span aria-hidden="true"></span></summary><div class="account-list"><div class="account-row"><div><span>아버지</span><strong>정휘진</strong><small>농협 15004052070881</small></div><button type="button" aria-label="정휘진 계좌번호 복사">복사하기</button></div><div class="account-row"><div><span>어머니</span><strong>곽금영</strong><small>농협 798 12 145553</small></div><button type="button" aria-label="곽금영 계좌번호 복사">복사하기</button></div><div class="account-row"><div><span>신랑</span><strong>정해동</strong><small>우리 1002 448 257968</small></div><button type="button" aria-label="정해동 계좌번호 복사">복사하기</button></div></div></details><details><summary>신부 측<span aria-hidden="true"></span></summary><div class="account-list"><div class="account-row"><div><span>아버지</span><strong>이원호</strong><small>하나 115 890091 79607</small></div><button type="button" aria-label="이원호 계좌번호 복사">복사하기</button></div><div class="account-row"><div><span>어머니</span><strong>정효선</strong><small>우리 452 08 051071</small></div><button type="button" aria-label="정효선 계좌번호 복사">복사하기</button></div><div class="account-row"><div><span>신부</span><strong>이선옥</strong><small>우리 1002 857 898953</small></div><button type="button" aria-label="이선옥 계좌번호 복사">복사하기</button></div></div></details></div></section><footer><p>축하해 주셔서 감사합니다.</p><small>2026년 12월 26일</small></footer></main></div><!--$--><!--/$-->
+<div class="lightbox" role="dialog" aria-modal="true" aria-label="사진 크게 보기" hidden>
+  <button class="lightbox-close" type="button" aria-label="닫기">×</button>
+  <button class="lightbox-nav prev" type="button" aria-label="이전 사진">‹</button>
+  <img src="" alt="" />
+  <button class="lightbox-nav next" type="button" aria-label="다음 사진">›</button>
+  <p></p>
+</div>
+<div class="toast" role="status" hidden></div>
+<script>
+(() => {
+  const buttons = [...document.querySelectorAll('.gallery-grid button')];
+  const photos = buttons.map((button) => button.querySelector('img'));
+  const lightbox = document.querySelector('.lightbox');
+  const lightboxImage = lightbox.querySelector('img');
+  const counter = lightbox.querySelector('p');
+  const toast = document.querySelector('.toast');
+  let current = 0;
+  let toastTimer;
+
+  const showPhoto = (index) => {
+    current = (index + photos.length) % photos.length;
+    const source = photos[current];
+    lightboxImage.src = source.src;
+    lightboxImage.alt = source.alt;
+    lightboxImage.style.objectPosition = source.style.objectPosition;
+    counter.textContent = (current + 1) + ' / ' + photos.length;
+    lightbox.hidden = false;
+    document.body.classList.add('no-scroll');
+  };
+
+  const closePhoto = () => {
+    lightbox.hidden = true;
+    document.body.classList.remove('no-scroll');
+  };
+
+  buttons.forEach((button, index) => button.addEventListener('click', () => showPhoto(index)));
+  lightbox.querySelector('.lightbox-close').addEventListener('click', closePhoto);
+  lightbox.querySelector('.prev').addEventListener('click', () => showPhoto(current - 1));
+  lightbox.querySelector('.next').addEventListener('click', () => showPhoto(current + 1));
+  document.addEventListener('keydown', (event) => {
+    if (lightbox.hidden) return;
+    if (event.key === 'Escape') closePhoto();
+    if (event.key === 'ArrowLeft') showPhoto(current - 1);
+    if (event.key === 'ArrowRight') showPhoto(current + 1);
+  });
+
+  const showToast = (message) => {
+    clearTimeout(toastTimer);
+    toast.textContent = message;
+    toast.hidden = false;
+    toastTimer = setTimeout(() => { toast.hidden = true; }, 2600);
+  };
+
+  document.querySelectorAll('.account-row button').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const account = button.closest('.account-row').querySelector('small').textContent.trim();
+      try {
+        await navigator.clipboard.writeText(account);
+        showToast('계좌번호를 복사했습니다.');
+      } catch {
+        showToast('복사하지 못했습니다. 잠시 후 다시 시도해 주세요.');
+      }
+    });
+  });
+})();
+</script></body></html>
